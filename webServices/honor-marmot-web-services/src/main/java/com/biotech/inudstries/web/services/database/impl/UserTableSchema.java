@@ -20,7 +20,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getUserIDColumn() {
-		return "id_user";
+		return Messages.getString("UserTableSchema.USER_ID"); //$NON-NLS-1$
 	}
 
 	/*
@@ -29,7 +29,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getUsernameColumn() {
-		return "username";
+		return Messages.getString("UserTableSchema.USERNAME"); //$NON-NLS-1$
 	}
 
 	/*
@@ -39,7 +39,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getSaltColumn() {
-		return "salt";
+		return Messages.getString("UserTableSchema.SALT"); //$NON-NLS-1$
 	}
 
 	/*
@@ -48,7 +48,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getPasswordColumn() {
-		return "password";
+		return Messages.getString("UserTableSchema.PASSWORD"); //$NON-NLS-1$
 	}
 
 	/*
@@ -57,7 +57,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getFirstNameColumn() {
-		return "first_name";
+		return Messages.getString("UserTableSchema.FIRSTNAME"); //$NON-NLS-1$
 	}
 
 	/*
@@ -66,7 +66,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getLastNameColumn() {
-		return "last_name";
+		return Messages.getString("UserTableSchema.LASTNAME"); //$NON-NLS-1$
 	}
 
 	/*
@@ -76,7 +76,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getEmailColumn() {
-		return "email";
+		return Messages.getString("UserTableSchema.EMAIL"); //$NON-NLS-1$
 	}
 
 	/*
@@ -85,7 +85,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getRegistrationTimeColumn() {
-		return "registration_time";
+		return Messages.getString("UserTableSchema.REGISTRATION_TIME"); //$NON-NLS-1$
 	}
 
 	/*
@@ -95,6 +95,6 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getTableName() {
-		return "user";
+		return Messages.getString("UserTableSchema.TABLE_NAME"); //$NON-NLS-1$
 	}
 }

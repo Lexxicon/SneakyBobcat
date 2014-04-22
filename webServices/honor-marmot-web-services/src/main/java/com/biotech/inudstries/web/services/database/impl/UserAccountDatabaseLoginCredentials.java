@@ -20,7 +20,7 @@ public class UserAccountDatabaseLoginCredentials implements IDatabaseLoginConfig
 	 */
 	@Override
 	public String getUsername() {
-		return "account_service";
+		return Messages.getString("UserAccountDatabaseLoginCredentials.USERNAME"); //$NON-NLS-1$
 	}
 
 	/*
@@ -30,7 +30,7 @@ public class UserAccountDatabaseLoginCredentials implements IDatabaseLoginConfig
 	 */
 	@Override
 	public String getPassword() {
-		return "OLa6co2GzW8ivYAKc89I";
+		return Messages.getString("UserAccountDatabaseLoginCredentials.PASSWORD"); //$NON-NLS-1$
 	}
 
 }

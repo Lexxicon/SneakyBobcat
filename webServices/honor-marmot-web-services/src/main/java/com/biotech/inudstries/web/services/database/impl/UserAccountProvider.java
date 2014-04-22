@@ -116,6 +116,7 @@ public class UserAccountProvider implements IUserAccountProvider {
 			String query = String.format(SELECT_USER_BY_USERNAME, database.getDatabaseName());
 			statement = connection.prepareStatement(query);
 			statement.setString(1, username);
+			LOGGER.trace(String.valueOf(statement));
 
 			result = statement.executeQuery();
 			user = userFactory.extractUser(result, tableSchema);
@@ -141,7 +142,36 @@ public class UserAccountProvider implements IUserAccountProvider {
 	 */
 	@Override
 	public IAuthorizedUser getAuthorizedUser(IUser user, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+		IAuthorizedUser authorizedUser = null;
+
+		try {
+			connection = DriverManager.getConnection(
+					database.getConnectionString(),
+					loginInformation.getUsername(),
+					loginInformation.getPassword());
+			String query = String.format(SELECT_USER_BY_USERNAME_AND_PASSWORD, database.getDatabaseName());
+			statement = connection.prepareStatement(query);
+			statement.setString(1, user.getUsername());
+			statement.setString(2, password);
+			LOGGER.trace(String.valueOf(statement));
+			result = statement.executeQuery();
+			authorizedUser = userFactory.extractAuthorizedUser(result, tableSchema);
+			// LOGGER.info("User: " + user.getFirstName());
+		} catch (SQLException e) {
+			LOGGER.error("Error while getting authorized user by username.", e);
+		} finally {
+			List<Exception> exceptions = closeAll(connection, statement, result);
+			// if we have exceptions log them
+			if (exceptions.size() > 0) {
+				LOGGER.error("Exceptions while closing sql authorized get user by username.");
+				for (Exception e : exceptions) {
+					LOGGER.error("Error:", e);
+				}
+			}
+		}
+		return authorizedUser;
 	}
 }

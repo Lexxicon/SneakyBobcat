@@ -3,15 +3,42 @@
  */
 package com.biotech.inudstries.web.services.account.impl;
 
+import junit.framework.TestCase;
+
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * Created: Apr 21, 2014
+ * 
  * @author Brian Holman
  *
  */
-public class UserExtractorTest {
+public class UserExtractorTest extends TestCase {
 
 	private static transient final Logger LOGGER = LoggerFactory.getLogger(UserExtractorTest.class);
+
+	/*
+	 * @see junit.framework.TestCase#setUp()
+	 */
+	@Override
+	protected void setUp() throws Exception {
+		// TODO Auto-generated method stub
+		super.setUp();
+	}
+
+	@Test
+	public void testExtraction() {
+
+	}
+
+	/*
+	 * @see junit.framework.TestCase#tearDown()
+	 */
+	@Override
+	protected void tearDown() throws Exception {
+		// TODO Auto-generated method stub
+		super.tearDown();
+	}
 }

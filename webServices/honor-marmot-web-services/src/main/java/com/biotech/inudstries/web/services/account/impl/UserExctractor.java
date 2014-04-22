@@ -88,7 +88,6 @@ public class UserExctractor implements IUserExtractor {
 				user.setUserID(queryResult.getInt(tableSchema.getUserIDColumn()));
 				user.setRegistrationTime(dateTimeConverter.create(queryResult.getTimestamp(tableSchema
 						.getRegistrationTimeColumn())));
-
 				return user;
 			}
 		} catch (SQLException e) {

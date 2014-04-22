@@ -23,7 +23,7 @@ public class UserAccountDatabase implements IDatabaseConfiguration {
 	 */
 	@Override
 	public String getDatabaseName() {
-		return "honorMarmot";
+		return Messages.getString("UserAccountDatabase.DATABASE_NAME"); //$NON-NLS-1$
 	}
 
 	/*
@@ -41,7 +41,7 @@ public class UserAccountDatabase implements IDatabaseConfiguration {
 	 */
 	@Override
 	public String getServerAddress() {
-		return "192.168.1.4";
+		return Messages.getString("UserAccountDatabase.SERVER_IP"); //$NON-NLS-1$
 	}
 
 	/*
@@ -50,11 +50,11 @@ public class UserAccountDatabase implements IDatabaseConfiguration {
 	 */
 	@Override
 	public boolean loadDatabaseDriver() {
-		LOGGER.debug("Loading drivers for " + getDatabaseName());
+		LOGGER.debug("Loading drivers for " + getDatabaseName()); //$NON-NLS-1$
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(Messages.getString("UserAccountDatabase.DATABASE_DRIVER")); //$NON-NLS-1$
 		} catch (ClassNotFoundException e) {
-			LOGGER.error("Failed to load drivers for " + getDatabaseName(), e);
+			LOGGER.error("Failed to load drivers for " + getDatabaseName(), e); //$NON-NLS-1$
 			return false;
 		}
 		return true;
