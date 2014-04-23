@@ -17,13 +17,18 @@ import com.biotech.inudstries.web.services.database.IDatabaseConfiguration;
 public class UserAccountDatabase implements IDatabaseConfiguration {
 	private static transient final Logger LOGGER = LoggerFactory.getLogger(UserAccountDatabase.class);
 
+	final String databaseName = Messages.getString("UserAccountDatabase.DATABASE_NAME");
+	final String serverAddress = Messages.getString("UserAccountDatabase.SERVER_IP");
+	final String databaseDriver = Messages.getString("UserAccountDatabase.DATABASE_DRIVER");
+	final int serverPort = Integer.parseInt(Messages.getString("UserAccountDatabase.SERVER_PORT"));
+
 	/*
 	 * @see com.biotech.inudstries.web.services.database.IDatabaseConfiguration#
 	 * getDatabaseName()
 	 */
 	@Override
 	public String getDatabaseName() {
-		return Messages.getString("UserAccountDatabase.DATABASE_NAME"); //$NON-NLS-1$
+		return databaseName;
 	}
 
 	/*
@@ -32,7 +37,7 @@ public class UserAccountDatabase implements IDatabaseConfiguration {
 	 */
 	@Override
 	public int getServerPort() {
-		return 3306;
+		return serverPort;
 	}
 
 	/*
@@ -41,7 +46,7 @@ public class UserAccountDatabase implements IDatabaseConfiguration {
 	 */
 	@Override
 	public String getServerAddress() {
-		return Messages.getString("UserAccountDatabase.SERVER_IP"); //$NON-NLS-1$
+		return serverAddress;
 	}
 
 	/*
@@ -52,7 +57,7 @@ public class UserAccountDatabase implements IDatabaseConfiguration {
 	public boolean loadDatabaseDriver() {
 		LOGGER.debug("Loading drivers for " + getDatabaseName()); //$NON-NLS-1$
 		try {
-			Class.forName(Messages.getString("UserAccountDatabase.DATABASE_DRIVER")); //$NON-NLS-1$
+			Class.forName(databaseDriver); //$NON-NLS-1$
 		} catch (ClassNotFoundException e) {
 			LOGGER.error("Failed to load drivers for " + getDatabaseName(), e); //$NON-NLS-1$
 			return false;

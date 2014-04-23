@@ -13,6 +13,9 @@ import com.biotech.inudstries.web.services.database.IDatabaseLoginConfiguration;
  */
 public class UserAccountDatabaseLoginCredentials implements IDatabaseLoginConfiguration {
 
+	String username = Messages.getString("UserAccountDatabaseLoginCredentials.USERNAME");
+	String password = Messages.getString("UserAccountDatabaseLoginCredentials.PASSWORD");
+
 	/*
 	 * @see
 	 * com.biotech.inudstries.web.services.database.IDatabaseLoginConfiguration
@@ -20,7 +23,7 @@ public class UserAccountDatabaseLoginCredentials implements IDatabaseLoginConfig
 	 */
 	@Override
 	public String getUsername() {
-		return Messages.getString("UserAccountDatabaseLoginCredentials.USERNAME"); //$NON-NLS-1$
+		return username;
 	}
 
 	/*
@@ -30,7 +33,7 @@ public class UserAccountDatabaseLoginCredentials implements IDatabaseLoginConfig
 	 */
 	@Override
 	public String getPassword() {
-		return Messages.getString("UserAccountDatabaseLoginCredentials.PASSWORD"); //$NON-NLS-1$
+		return password;
 	}
 
 }

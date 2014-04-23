@@ -13,6 +13,17 @@ import com.biotech.inudstries.web.services.database.IUserTableSchema;
  */
 public class UserTableSchema implements IUserTableSchema {
 
+	final String tableName = Messages.getString("UserTableSchema.TABLE_NAME");
+
+	final String userIDColumn = Messages.getString("UserTableSchema.USER_ID");
+	final String usernameColumn = Messages.getString("UserTableSchema.USERNAME");
+	final String saltColumn = Messages.getString("UserTableSchema.SALT");
+	final String passwordColumn = Messages.getString("UserTableSchema.PASSWORD");
+	final String firstNameColumn = Messages.getString("UserTableSchema.FIRSTNAME");
+	final String lastNameColumn = Messages.getString("UserTableSchema.LASTNAME");
+	final String emailColumn = Messages.getString("UserTableSchema.EMAIL");
+	final String registrationTimeColumn = Messages.getString("UserTableSchema.REGISTRATION_TIME");
+
 	/*
 	 * @see
 	 * com.biotech.inudstries.web.services.database.IUserTableSchema#getUserIDColumn
@@ -20,7 +31,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getUserIDColumn() {
-		return Messages.getString("UserTableSchema.USER_ID"); //$NON-NLS-1$
+		return userIDColumn;
 	}
 
 	/*
@@ -29,7 +40,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getUsernameColumn() {
-		return Messages.getString("UserTableSchema.USERNAME"); //$NON-NLS-1$
+		return usernameColumn;
 	}
 
 	/*
@@ -39,7 +50,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getSaltColumn() {
-		return Messages.getString("UserTableSchema.SALT"); //$NON-NLS-1$
+		return saltColumn;
 	}
 
 	/*
@@ -48,7 +59,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getPasswordColumn() {
-		return Messages.getString("UserTableSchema.PASSWORD"); //$NON-NLS-1$
+		return passwordColumn;
 	}
 
 	/*
@@ -57,7 +68,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getFirstNameColumn() {
-		return Messages.getString("UserTableSchema.FIRSTNAME"); //$NON-NLS-1$
+		return firstNameColumn;
 	}
 
 	/*
@@ -66,7 +77,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getLastNameColumn() {
-		return Messages.getString("UserTableSchema.LASTNAME"); //$NON-NLS-1$
+		return lastNameColumn;
 	}
 
 	/*
@@ -76,7 +87,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getEmailColumn() {
-		return Messages.getString("UserTableSchema.EMAIL"); //$NON-NLS-1$
+		return emailColumn;
 	}
 
 	/*
@@ -85,7 +96,7 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getRegistrationTimeColumn() {
-		return Messages.getString("UserTableSchema.REGISTRATION_TIME"); //$NON-NLS-1$
+		return registrationTimeColumn;
 	}
 
 	/*
@@ -95,6 +106,6 @@ public class UserTableSchema implements IUserTableSchema {
 	 */
 	@Override
 	public String getTableName() {
-		return Messages.getString("UserTableSchema.TABLE_NAME"); //$NON-NLS-1$
+		return tableName;
 	}
 }
