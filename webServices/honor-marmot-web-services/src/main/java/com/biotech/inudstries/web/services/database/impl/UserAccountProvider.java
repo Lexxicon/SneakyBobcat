@@ -38,7 +38,7 @@ public class UserAccountProvider implements IUserAccountProvider {
 	private final IDatabaseConfiguration database;
 	private final IDatabaseLoginConfiguration loginInformation;
 	private final IUserTableSchema tableSchema;
-	private final IUserExtractor userFactory;
+	private final IUserExtractor userExtractor;
 
 	private final String SELECT_USER_BY_USERNAME;
 	private final String SELECT_USER_BY_USERNAME_AND_PASSWORD;
@@ -52,12 +52,12 @@ public class UserAccountProvider implements IUserAccountProvider {
 			@Named(WANTED_DATABASE) IDatabaseConfiguration database,
 			@Named(WANTED_CREDENTIALS) IDatabaseLoginConfiguration loginInformation,
 			IUserTableSchema tableSchema,
-			IUserExtractor userFactory) throws Exception {
+			IUserExtractor userExtractor) throws Exception {
 
 		this.database = database;
 		this.loginInformation = loginInformation;
 		this.tableSchema = tableSchema;
-		this.userFactory = userFactory;
+		this.userExtractor = userExtractor;
 
 		this.SELECT_USER_BY_USERNAME = QueryFormats.SELECT_ROW_BY_COLUMN.build(
 				database.getDatabaseName(),
@@ -113,13 +113,12 @@ public class UserAccountProvider implements IUserAccountProvider {
 					database.getConnectionString(),
 					loginInformation.getUsername(),
 					loginInformation.getPassword());
-			String query = String.format(SELECT_USER_BY_USERNAME, database.getDatabaseName());
-			statement = connection.prepareStatement(query);
+			statement = connection.prepareStatement(SELECT_USER_BY_USERNAME);
 			statement.setString(1, username);
 			LOGGER.trace(String.valueOf(statement));
 
 			result = statement.executeQuery();
-			user = userFactory.extractUser(result, tableSchema);
+			user = userExtractor.extractUser(result, tableSchema);
 			// LOGGER.info("User: " + user.getFirstName());
 		} catch (SQLException e) {
 			LOGGER.error("Error while getting user by username.", e);
@@ -152,13 +151,12 @@ public class UserAccountProvider implements IUserAccountProvider {
 					database.getConnectionString(),
 					loginInformation.getUsername(),
 					loginInformation.getPassword());
-			String query = String.format(SELECT_USER_BY_USERNAME_AND_PASSWORD, database.getDatabaseName());
-			statement = connection.prepareStatement(query);
+			statement = connection.prepareStatement(SELECT_USER_BY_USERNAME_AND_PASSWORD);
 			statement.setString(1, user.getUsername());
 			statement.setString(2, password);
 			LOGGER.trace(String.valueOf(statement));
 			result = statement.executeQuery();
-			authorizedUser = userFactory.extractAuthorizedUser(result, tableSchema);
+			authorizedUser = userExtractor.extractAuthorizedUser(result, tableSchema);
 			// LOGGER.info("User: " + user.getFirstName());
 		} catch (SQLException e) {
 			LOGGER.error("Error while getting authorized user by username.", e);

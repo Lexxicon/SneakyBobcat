@@ -39,7 +39,6 @@ public class App {
 				hexString.append(hex);
 			}
 			IAuthorizedUser authUser = provider.getAuthorizedUser(user, hexString.toString());
-			LOGGER.info("hashed: " + hexString.toString());
 			LOGGER.info(String.valueOf(authUser.getUserID()));
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();

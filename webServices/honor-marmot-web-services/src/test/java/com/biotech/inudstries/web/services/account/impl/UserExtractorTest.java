@@ -24,7 +24,7 @@ public class UserExtractorTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		// TODO Auto-generated method stub
+		LOGGER.info("Setting up " + getClass());
 		super.setUp();
 	}
 
@@ -38,7 +38,7 @@ public class UserExtractorTest extends TestCase {
 	 */
 	@Override
 	protected void tearDown() throws Exception {
-		// TODO Auto-generated method stub
+		LOGGER.info("Tearing down " + getClass());
 		super.tearDown();
 	}
 }

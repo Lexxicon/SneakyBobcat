@@ -24,6 +24,16 @@ public enum QueryFormats {
 	 */
 	SELECT_ROW_BY_COLUMN("SELECT * FROM %1$s.%2$s WHERE %3$s= ?"),
 
+	/**
+	 * Takes four parameters and returns a string that can be used to generate a
+	 * {@link PreparedStatement} with two arguments, the values of columns
+	 * specified by the third and fourth parameter to select rows by.
+	 * 
+	 * @Param DatabaseName Name of the database to select from
+	 * @Param TableName Name of the table to select from
+	 * @Param ColumnName Name of the column to look for a value in
+	 * @Param ColumnName Name of the column to look for a value in
+	 */
 	SELECT_ROW_BY_TWO_COLUMN("SELECT * FROM %1$s.%2$s WHERE %3$s= ? AND %4$s= ?");
 
 	private final String query;

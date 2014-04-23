@@ -16,17 +16,12 @@ import com.biotech.inudstries.web.services.account.ISetableAuthorizedUser;
  * @author Brian Holman
  *
  */
-public class AuthorizedUser implements IAuthorizedUser, ISetableAuthorizedUser {
+public class AuthorizedUser extends User implements IAuthorizedUser, ISetableAuthorizedUser {
 
 	@SuppressWarnings("unused")
 	private static transient final Logger LOGGER = LoggerFactory.getLogger(AuthorizedUser.class);
 
 	private int userID;
-	private String username;
-	private String salt;
-	private String firstName;
-	private String lastName;
-	private String email;
 
 	private String sessionKey;
 	private DateTime registrationTime;
@@ -46,91 +41,6 @@ public class AuthorizedUser implements IAuthorizedUser, ISetableAuthorizedUser {
 	@Override
 	public void setUserID(int userID) {
 		this.userID = userID;
-	}
-
-	/**
-	 * @return the username
-	 */
-	@Override
-	public String getUsername() {
-		return username;
-	}
-
-	/**
-	 * @param username
-	 *            the username to set
-	 */
-	@Override
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	/**
-	 * @return the salt
-	 */
-	@Override
-	public String getSalt() {
-		return salt;
-	}
-
-	/**
-	 * @param salt
-	 *            the salt to set
-	 */
-	@Override
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
-
-	/**
-	 * @return the firstName
-	 */
-	@Override
-	public String getFirstName() {
-		return firstName;
-	}
-
-	/**
-	 * @param firstName
-	 *            the firstName to set
-	 */
-	@Override
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	/**
-	 * @return the lastName
-	 */
-	@Override
-	public String getLastName() {
-		return lastName;
-	}
-
-	/**
-	 * @param lastName
-	 *            the lastName to set
-	 */
-	@Override
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	/**
-	 * @return the email
-	 */
-	@Override
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email
-	 *            the email to set
-	 */
-	@Override
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	/**
@@ -167,4 +77,51 @@ public class AuthorizedUser implements IAuthorizedUser, ISetableAuthorizedUser {
 		this.registrationTime = registrationTime;
 	}
 
+	/*
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((registrationTime == null) ? 0 : registrationTime.hashCode());
+		result = prime * result + ((sessionKey == null) ? 0 : sessionKey.hashCode());
+		result = prime * result + userID;
+		return result;
+	}
+
+	/*
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		AuthorizedUser other = (AuthorizedUser) obj;
+		if (registrationTime == null) {
+			if (other.registrationTime != null) {
+				return false;
+			}
+		} else if (!registrationTime.equals(other.registrationTime)) {
+			return false;
+		}
+		if (sessionKey == null) {
+			if (other.sessionKey != null) {
+				return false;
+			}
+		} else if (!sessionKey.equals(other.sessionKey)) {
+			return false;
+		}
+		if (userID != other.userID) {
+			return false;
+		}
+		return true;
+	}
 }
