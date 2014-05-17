@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 
 import com.biotech.inudstries.web.services.account.IAuthorizedUser;
 import com.biotech.inudstries.web.services.account.IUser;
-import com.biotech.inudstries.web.services.database.DatabaseModule;
 import com.biotech.inudstries.web.services.database.IUserAccountProvider;
+import com.biotech.inudstries.web.services.database.impl.DatabaseModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 

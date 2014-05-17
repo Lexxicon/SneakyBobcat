@@ -52,7 +52,7 @@ public class UserAccountProvider implements IUserAccountProvider {
 			@Named(WANTED_DATABASE) IDatabaseConfiguration database,
 			@Named(WANTED_CREDENTIALS) IDatabaseLoginConfiguration loginInformation,
 			IUserTableSchema tableSchema,
-			IUserExtractor userExtractor) throws Exception {
+			IUserExtractor userExtractor) {
 
 		this.database = database;
 		this.loginInformation = loginInformation;
@@ -115,7 +115,7 @@ public class UserAccountProvider implements IUserAccountProvider {
 					loginInformation.getPassword());
 			statement = connection.prepareStatement(SELECT_USER_BY_USERNAME);
 			statement.setString(1, username);
-			LOGGER.trace(String.valueOf(statement));
+			LOGGER.trace("Querying for username with: {}", String.valueOf(statement));
 
 			result = statement.executeQuery();
 			user = userExtractor.extractUser(result, tableSchema);
@@ -154,10 +154,10 @@ public class UserAccountProvider implements IUserAccountProvider {
 			statement = connection.prepareStatement(SELECT_USER_BY_USERNAME_AND_PASSWORD);
 			statement.setString(1, user.getUsername());
 			statement.setString(2, password);
-			LOGGER.trace(String.valueOf(statement));
+			LOGGER.trace("Querying for authorized user with: {}", String.valueOf(statement));
 			result = statement.executeQuery();
 			authorizedUser = userExtractor.extractAuthorizedUser(result, tableSchema);
-			// LOGGER.info("User: " + user.getFirstName());
+
 		} catch (SQLException e) {
 			LOGGER.error("Error while getting authorized user by username.", e);
 		} finally {
